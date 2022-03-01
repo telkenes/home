@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>New Tab</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            font-family: "Quicksand", sans-serif;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #141414;
+        }
+
+        .search {
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #s {
+            color: #ffffff;
+            font-size: 128px;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            text-align: center;
+            background: none;
+            width: 100%;
+            outline: 0;
+            border: 0px;
+            text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.125);
+        }
+
+        .engine {
+            text-align: center;
+            color: #ffffff;
+        }
+    </style>
+    <div>
+        <div class="search">
+            <form id="searchForm" onsubmit="search(event)" oninput="engine()">
+                <div id="input">
+                    <input id="s" type="text" autocomplete="off" spellcheck="false" placeholder="Search..." />
+                </div>
+            </form>
+            <div class="engine">
+                <img>
+                <h1 id="engine">Google</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        //Auto focus the input
+        document.getElementById('s').focus()
+
+        //Search function
+        function search(e) {
+            e.preventDefault()
+            e.stopPropagation();
+            let queries = document.getElementById('s').value.split(' ')
+            let query = queries.slice(1, queries.length + 1).join(" ")
+
+            /*
+                Custom Search Enginers / Bang feature on ddg / vivaldi thing
+                - Used .replace() so you cant use the back button
+                - a bit jank default statement
+
+                Keywords:
+                - g, Google
+                - y, YouTube
+                - d, DuckDuckGo
+                - fm, Last.fm
+                - t, Tokopedia
+                - w, Wikipedia
+            */
+            switch (queries[0]) {
+                case "g":
+                    window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
+                    break;
+                case "y":
+                    window.location.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`
+                    break;
+                case "d":
+                    window.location.href = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`
+                    break;
+                case "fm":
+                    window.location.href = `https://last.fm/user/${encodeURIComponent(query)}`
+                    break;
+                case "t":
+                    window.location.href = `https://www.tokopedia.com/search?q=${encodeURIComponent(query)}`
+                    break;
+                case "w":
+                    window.location.href = `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}`
+                    break;
+                default:
+                    query = queries.length > 1 ? `${queries[0]} ${query}` : queries[0]
+                    window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
+            }
+        }
+
+        function engine(e) {
+            let engine = document.getElementById('s').value.split(' ')[0]
+            console.log(engine)
+            let engineFull = 'Google'
+            switch (engine) {
+                case "g":
+                    engineFull = 'Google'
+                    break;
+                case "y":
+                    engineFull = 'YouTube'
+                    break;
+                case "d":
+                    engineFull = 'DuckDuckGo'
+                    break;
+                case "fm":
+                    engineFull = 'LastFM'
+                    break;
+                case "t":
+                    engineFull = 'Tokopedia'
+                    break;
+                case "w":
+                    engineFull = 'Wikipedia'
+                    break;
+                default:
+                    engineFull = 'Google'
+            }
+            document.getElementById('engine').innerText = engineFull
+        }
+    </script>
+</body>
+
+</html>
