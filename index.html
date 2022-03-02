@@ -90,6 +90,7 @@
                     window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
                     break;
                 case "y":
+                    if (query === '') return window.location.href = 'https://www.youtube.com'
                     window.location.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`
                     break;
                 case "d":
@@ -106,6 +107,7 @@
                     break;
                 default:
                     query = queries.length > 1 ? `${queries[0]} ${query}` : queries[0]
+                    if (query === 'tea') return window.location.href = 'https://teams.microsoft.com/'
                     window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
             }
         }
