@@ -108,6 +108,7 @@
                 default:
                     query = queries.length > 1 ? `${queries[0]} ${query}` : queries[0]
                     if (query === 'tea') return window.location.href = 'https://teams.microsoft.com/'
+                    if (query === 'one') return window.location.href = 'https://www.office.com/launch/onenote?auth=2'
                     window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
             }
         }
