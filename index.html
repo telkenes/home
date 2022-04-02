@@ -107,10 +107,16 @@
                     break;
                 default:
                     query = queries.length > 1 ? `${queries[0]} ${query}` : queries[0]
-                    if (query === 'tea') return window.location.href = 'https://teams.microsoft.com/'
-                    if (query === 'one') return window.location.href = 'https://www.office.com/launch/onenote?auth=2'
-                    if (query === 'cloud') return window.location.href = 'https://dash.cloudflare.com/'
-                    if (query === 'db') return window.location.href = 'https://cloud.mongodb.com/'
+                    
+                    //short hands
+                    let short = {
+                        "tea": "https://teams.microsoft.com/",
+                        "one": "https://www.office.com/launch/onenote?auth=2",
+                        "cloud": "https://dash.cloudflare.com/",
+                        "db": "https://cloud.mongodb.com/"
+                    }
+                    if (short[query]) return window.location.href = short[query]
+
                     window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`
             }
         }
