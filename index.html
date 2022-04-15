@@ -102,6 +102,9 @@
                 case "t":
                     window.location.href = `https://www.tokopedia.com/search?q=${encodeURIComponent(query)}`
                     break;
+                case "gh":
+                    window.location.href = `https://github.com/search?q=${encodedURIComponent(query)}`
+                    break;
                 case "w":
                     window.location.href = `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}`
                     break;
@@ -114,7 +117,9 @@
                         "one": "https://www.office.com/launch/onenote?auth=2",
                         "cloud": "https://dash.cloudflare.com/",
                         "db": "https://cloud.mongodb.com/",
-                        "local": "http://localhost:3000"
+                        "local": "http://localhost:3000",
+                        "gh": "https://github.com"
+
                     }
                     if (short[query]) return window.location.href = short[query]
 
@@ -148,6 +153,8 @@
                 case "w":
                     engineFull = 'Wikipedia'
                     break;
+                case "gh":
+                    engineFull = "Github"
                 default:
                     engineFull = 'Google'
             }
