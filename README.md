@@ -1,7 +1,7 @@
 # Home page
 # Created by [telkenes](https://github.com/telkenes) , edited by [uiopler](https://github.com/uiopler) 
 
-#Features
+# Features
 
 - Clean UI
 - Custom Shortcuts (inspired by duckduckgo bangs)
